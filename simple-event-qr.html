@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Check-In QR Code</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+    .event-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .qr-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .btn-primary {
+      background-color: #4e73df;
+      border-color: #4e73df;
+    }
+    .btn-primary:hover {
+      background-color: #2e59d9;
+      border-color: #2653d4;
+    }
+    .event-details {
+      margin-bottom: 20px;
+    }
+    .event-details p {
+      margin-bottom: 8px;
+    }
+    .event-title {
+      color: #4e73df;
+      margin-bottom: 15px;
+    }
+    .alert {
+      transition: opacity 0.5s ease;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .required-field::after {
+      content: " *";
+      color: #dc3545;
+    }
+    .registration-steps {
+      counter-reset: step;
+      margin-bottom: 20px;
+    }
+    .registration-step {
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 10px;
+    }
+    .registration-step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: #4e73df;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center my-4">Event Check-In System</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <!-- Event Card -->
+        <div class="event-card">
+          <h2 class="event-title">Tech Conference 2025</h2>
+
+          <div class="event-details">
+            <p><strong>Date:</strong> May 15, 2025</p>
+            <p><strong>Time:</strong> 10:00 AM - 5:00 PM</p>
+            <p><strong>Location:</strong> Main Auditorium</p>
+            <p><strong>Description:</strong> Join us for a day of tech talks, workshops, and networking opportunities. The Tech Conference 2025 brings together industry leaders, innovators, and tech enthusiasts to explore the latest trends and advancements in technology.</p>
+          </div>
+
+          <!-- Registration Form -->
+          <div id="registrationForm">
+            <h4 class="mb-3">Register for this Event</h4>
+
+            <div class="alert alert-info mb-3">
+              <i class="bi bi-info-circle-fill me-2"></i> Please complete the registration form below to generate your QR code.
+            </div>
+
+            <div class="registration-steps mb-4">
+              <div class="registration-step">
+                <strong>Enter your information</strong>
+                <p class="text-muted mb-0">Fill out the form with your personal details</p>
+              </div>
+              <div class="registration-step">
+                <strong>Generate QR code</strong>
+                <p class="text-muted mb-0">Your unique QR code will be created</p>
+              </div>
+              <div class="registration-step">
+                <strong>Present at event</strong>
+                <p class="text-muted mb-0">Show your QR code at the event for check-in</p>
+              </div>
+            </div>
+
+            <form id="attendeeForm" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="inputName" class="form-label required-field">Full Name</label>
+                <input type="text" class="form-control" id="inputName" required>
+                <div class="invalid-feedback">Please enter your full name.</div>
+              </div>
+              <div class="mb-3">
+                <label for="inputEmail" class="form-label required-field">Email Address</label>
+                <input type="email" class="form-control" id="inputEmail" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+              </div>
+              <div class="mb-3">
+                <label for="inputStudentId" class="form-label required-field">Student ID</label>
+                <input type="text" class="form-control" id="inputStudentId" required>
+                <div class="invalid-feedback">Please enter your student ID.</div>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  <i class="bi bi-qr-code me-2"></i> Register & Generate QR Code
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- QR Code Container (initially hidden) -->
+          <div id="qrContainer" class="qr-container" style="display: none;">
+            <div class="text-center">
+              <div class="alert alert-success mb-4">
+                <i class="bi bi-check-circle-fill me-2"></i> Registration successful! Your QR code has been generated.
+              </div>
+
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title mb-3">Your Event QR Code</h5>
+                  <div id="qrcode" class="mb-3"></div>
+                  <p class="card-text">
+                    <i class="bi bi-info-circle me-2"></i> Present this QR code at the event for check-in
+                  </p>
+                  <button id="downloadQrBtn" class="btn btn-outline-primary mt-2">
+                    <i class="bi bi-download me-2"></i> Download QR Code
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attendee Information (initially hidden) -->
+          <div id="attendeeInfo" style="display: none;">
+            <h4 class="mb-3">Attendee Information</h4>
+            <div class="card">
+              <div class="card-header bg-light">
+                <i class="bi bi-person-badge me-2"></i> Registration Details
+              </div>
+              <div class="card-body">
+                <p><strong>Name:</strong> <span id="attendeeName"></span></p>
+                <p><strong>Email:</strong> <span id="attendeeEmail"></span></p>
+                <p><strong>Student ID:</strong> <span id="attendeeId"></span></p>
+                <p class="mb-0"><strong>Registration Date:</strong> <span id="registrationDate"></span></p>
+              </div>
+              <div class="card-footer bg-light">
+                <small class="text-muted">Please keep this information for your records</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Check-in Card (for demo purposes) -->
+        <div class="event-card">
+          <h3 class="mb-3">Admin Check-in</h3>
+          <p>Scan the QR code above or enter the attendee ID manually:</p>
+
+          <div class="input-group mb-3">
+            <input type="text" id="manualId" class="form-control" placeholder="Enter attendee ID">
+            <button class="btn btn-primary" id="checkInBtn">Check In</button>
+          </div>
+
+          <div id="checkInResult" style="display: none;" class="alert alert-success">
+            <strong>Success!</strong> Attendee has been checked in.
+          </div>
+
+          <div id="emailSentResult" style="display: none;" class="alert alert-info mt-3">
+            <strong><i class="bi bi-envelope-check"></i> Confirmation Email Sent!</strong>
+            <p class="mb-0">A confirmation email has been sent to <span id="confirmationEmail"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sample event data
+      const event = {
+        id: 'EVT001',
+        title: 'Tech Conference 2025',
+        date: 'May 15, 2025',
+        time: '10:00 AM - 5:00 PM',
+        location: 'Main Auditorium'
+      };
+
+      // Format current date for registration
+      function formatDate(date) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+      }
+
+      // Set up check-in functionality
+      document.getElementById('checkInBtn').addEventListener('click', function() {
+        const manualId = document.getElementById('manualId').value.trim();
+
+        if (manualId === window.currentAttendeeId) {
+          // Show success message
+          document.getElementById('checkInResult').style.display = 'block';
+
+          // Clear input
+          document.getElementById('manualId').value = '';
+
+          // Simulate sending confirmation email after a short delay
+          setTimeout(function() {
+            // Display email confirmation message
+            document.getElementById('confirmationEmail').textContent = window.currentAttendeeEmail;
+            document.getElementById('emailSentResult').style.display = 'block';
+
+            // Simulate email sending animation
+            const emailResult = document.getElementById('emailSentResult');
+            emailResult.style.opacity = '0.7';
+            emailResult.innerHTML = '<div class="text-center"><i class="bi bi-envelope-paper fs-3 me-2"></i> Sending confirmation email...</div>';
+
+            setTimeout(function() {
+              emailResult.style.opacity = '1';
+              emailResult.innerHTML = `
+                <strong><i class="bi bi-envelope-check"></i> Confirmation Email Sent!</strong>
+                <p class="mb-0">A confirmation email has been sent to <span id="confirmationEmail">${window.currentAttendeeEmail}</span></p>
+              `;
+
+              // Hide both messages after 5 seconds
+              setTimeout(function() {
+                document.getElementById('checkInResult').style.display = 'none';
+                document.getElementById('emailSentResult').style.display = 'none';
+              }, 5000);
+            }, 1500);
+          }, 1000);
+        } else {
+          alert('Attendee not found. Please check the ID and try again.');
+        }
+      });
+
+      // Form validation
+      (function() {
+        'use strict';
+
+        // Fetch all forms that need validation
+        const forms = document.querySelectorAll('.needs-validation');
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+          }, false);
+        });
+      })();
+
+      // Handle form submission
+      document.getElementById('attendeeForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Check form validity
+        if (!this.checkValidity()) {
+          return;
+        }
+
+        // Get form values
+        const name = document.getElementById('inputName').value.trim();
+        const email = document.getElementById('inputEmail').value.trim();
+        const studentId = document.getElementById('inputStudentId').value.trim();
+
+        // Create attendee object
+        const attendee = {
+          id: studentId,
+          name: name,
+          email: email,
+          registrationDate: formatDate(new Date())
+        };
+
+        // Update attendee info display
+        document.getElementById('attendeeName').textContent = attendee.name;
+        document.getElementById('attendeeEmail').textContent = attendee.email;
+        document.getElementById('attendeeId').textContent = attendee.id;
+        document.getElementById('registrationDate').textContent = attendee.registrationDate;
+
+        // Generate QR code data
+        const qrData = {
+          eventId: event.id,
+          attendeeId: attendee.id,
+          name: attendee.name,
+          email: attendee.email,
+          timestamp: new Date().toISOString()
+        };
+
+        // Generate QR code
+        const qrContainer = document.getElementById('qrcode');
+        qrContainer.innerHTML = ''; // Clear previous QR code if any
+
+        new QRCode(qrContainer, {
+          text: JSON.stringify(qrData),
+          width: 200,
+          height: 200,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // Hide the registration form
+        document.getElementById('registrationForm').style.display = 'none';
+
+        // Show QR container and attendee info with animation
+        const qrContainer = document.getElementById('qrContainer');
+        const attendeeInfo = document.getElementById('attendeeInfo');
+
+        qrContainer.classList.add('fade-in');
+        attendeeInfo.classList.add('fade-in');
+
+        qrContainer.style.display = 'flex';
+        attendeeInfo.style.display = 'block';
+
+        // Add download QR code functionality
+        document.getElementById('downloadQrBtn').addEventListener('click', function() {
+          const canvas = document.querySelector('#qrcode canvas');
+          if (canvas) {
+            const link = document.createElement('a');
+            link.download = 'event-qr-code.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+          }
+        });
+
+        // Store the attendee info for check-in functionality
+        window.currentAttendeeId = attendee.id;
+        window.currentAttendeeEmail = attendee.email;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Check-In System Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 56px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #6c757d;
+        }
+        footer {
+            margin-top: auto;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Event Check-In System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#events">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#registrations">My Registrations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#admin">Admin Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="scanner.html">QR Scanner</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-light me-2" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="registerBtn">Register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-4">
+        <!-- Home Section -->
+        <section id="home" class="mb-5">
+            <div class="row">
+                <div class="col-md-12 text-center mb-4">
+                    <h1>Welcome to the Event Check-In System</h1>
+                    <p class="lead">
+                        A QR-based event check-in system for college events
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Browse Events</h5>
+                            <p class="card-text">
+                                View all upcoming events and register for the ones you're interested in.
+                            </p>
+                            <a href="#events" class="btn btn-primary">View Events</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">My Registrations</h5>
+                            <p class="card-text">
+                                View all events you've registered for and access your QR codes.
+                            </p>
+                            <a href="#registrations" class="btn btn-primary">View Registrations</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Admin Dashboard</h5>
+                            <p class="card-text">
+                                Access the admin dashboard to manage events and view statistics.
+                            </p>
+                            <a href="#admin" class="btn btn-primary">Go to Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="mb-5">
+            <h2 class="mb-4">Upcoming Events</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tech Conference 2025</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">May 15, 2025 at 10:00 AM</h6>
+                            <span class="badge bg-secondary mb-2">Main Auditorium</span>
+                            <p class="card-text">Join us for a day of tech talks, workshops, and networking opportunities.</p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-primary">View Details</button>
+                                <button class="btn btn-primary">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Hackathon 2025</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">June 10, 2025 at 9:00 AM</h6>
+                            <span class="badge bg-secondary mb-2">Computer Lab</span>
+                            <p class="card-text">24-hour coding competition with amazing prizes and learning opportunities.</p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-primary">View Details</button>
+                                <button class="btn btn-primary">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Career Fair</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">July 5, 2025 at 11:00 AM</h6>
+                            <span class="badge bg-secondary mb-2">College Hall</span>
+                            <p class="card-text">Meet recruiters from top companies and explore career opportunities.</p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-primary">View Details</button>
+                                <button class="btn btn-primary">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registrations Section -->
+        <section id="registrations" class="mb-5">
+            <h2 class="mb-4">My Registrations</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tech Conference 2025</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">May 15, 2025 at 10:00 AM</h6>
+                            <span class="badge bg-secondary mb-2">Main Auditorium</span>
+                            <p><strong>Registration Date:</strong> April 5, 2025</p>
+                            <p><strong>Status:</strong> <span class="badge bg-warning">Not Checked In</span></p>
+                            <button class="btn btn-primary" id="showQrButton">Show QR Code</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard Section -->
+        <section id="admin" class="mb-5">
+            <h2 class="mb-4">Admin Dashboard</h2>
+            <div class="mb-4">
+                <a href="scanner.html" class="btn btn-primary">Go to QR Scanner</a>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2>150</h2>
+                            <h5 class="card-title">Total Users</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2>5</h2>
+                            <h5 class="card-title">Total Events</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2>120</h2>
+                            <h5 class="card-title">Total Registrations</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2>75</h2>
+                            <h5 class="card-title">Total Check-ins</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Event Attendees</h5>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown">
+                            Export
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                            <li><a class="dropdown-item" href="#">Export as CSV</a></li>
+                            <li><a class="dropdown-item" href="#">Export as JSON</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Student ID</th>
+                                    <th>Registration Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>STU001</td>
+                                    <td>April 1, 2025</td>
+                                    <td><span class="badge bg-success">Checked In</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Jane Smith</td>
+                                    <td>jane@example.com</td>
+                                    <td>STU002</td>
+                                    <td>April 2, 2025</td>
+                                    <td><span class="badge bg-warning">Not Checked In</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Bob Johnson</td>
+                                    <td>bob@example.com</td>
+                                    <td>STU003</td>
+                                    <td>April 3, 2025</td>
+                                    <td><span class="badge bg-success">Checked In</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="qrModalLabel">QR Code for Tech Conference 2025</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div id="qrcode" class="mb-3 d-flex justify-content-center">
+                        <!-- QR code will be inserted here -->
+                    </div>
+                    <p><strong>Event:</strong> Tech Conference 2025</p>
+                    <p><strong>Date:</strong> May 15, 2025</p>
+                    <p><strong>Time:</strong> 10:00 AM</p>
+                    <p><strong>Location:</strong> Main Auditorium</p>
+                    <div class="alert alert-info mt-3">
+                        Present this QR code at the event for check-in.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                    <div class="mt-3 text-center">
+                        <p>Don't have an account? <a href="#" id="showRegisterModal">Register here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerStudentID" class="form-label">Student ID</label>
+                            <input type="text" class="form-control" id="registerStudentID" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required minlength="6">
+                            <div class="form-text">Password must be at least 6 characters long.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="registerConfirmPassword" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                    <div class="mt-3 text-center">
+                        <p>Already have an account? <a href="#" id="showLoginModal">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Event Check-In System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        // Sample event data
+        const sampleEvent = {
+            id: 'evt123456',
+            title: 'Tech Conference 2025',
+            date: '2025-05-15',
+            time: '10:00 AM',
+            location: 'Main Auditorium',
+            description: 'Join us for a day of tech talks, workshops, and networking opportunities.'
+        };
+
+        // Sample user data
+        const sampleUser = {
+            id: 'usr789012',
+            name: 'John Doe',
+            email: 'john@example.com',
+            studentID: 'STU001'
+        };
+
+        // Function to generate QR code
+        function generateQRCode(data) {
+            const qrData = JSON.stringify(data);
+            const qrContainer = document.getElementById('qrcode');
+
+            // Clear previous QR code if any
+            qrContainer.innerHTML = '';
+
+            // Create a new QR code
+            try {
+                new QRCode(qrContainer, qrData);
+                console.log('QR code generated successfully with data:', qrData);
+            } catch (error) {
+                console.error('Error generating QR code:', error);
+                qrContainer.innerHTML = '<div class="alert alert-danger">Failed to generate QR code. Please try again.</div>';
+            }
+        }
+
+        // Function to generate QR code data
+        function generateQRCodeData(userId, eventId) {
+            return {
+                userId: userId,
+                eventId: eventId,
+                timestamp: new Date().toISOString()
+            };
+        }
+
+        // Generate QR code when button is clicked
+        document.getElementById('showQrButton').addEventListener('click', function() {
+            // Clear previous QR code
+            document.getElementById('qrcode').innerHTML = '';
+
+            // Generate QR code data
+            const qrData = generateQRCodeData(sampleUser.id, sampleEvent.id);
+            console.log('Generated QR data:', qrData);
+
+            // Generate QR code
+            generateQRCode(qrData);
+
+            // Show modal
+            const qrModal = new bootstrap.Modal(document.getElementById('qrModal'));
+            qrModal.show();
+        });
+
+        // Function to register for an event
+        function registerForEvent(eventId) {
+            // In a real application, you would send this data to your backend API
+            console.log('Registering for event:', eventId);
+
+            // For demo purposes, simulate a successful registration
+            alert('Registration successful! You can now view your QR code in My Registrations.');
+
+            // Scroll to registrations section
+            document.getElementById('registrations').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add event listeners to register buttons
+        document.querySelectorAll('.card .btn-primary').forEach(button => {
+            if (button.textContent.trim() === 'Register') {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.card');
+                    const eventTitle = card.querySelector('.card-title').textContent;
+                    registerForEvent(eventTitle);
+                });
+            }
+        });
+
+        // Show login modal
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        });
+
+        // Show register modal
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+            registerModal.show();
+        });
+
+        // Switch from register to login
+        document.getElementById('showLoginModal').addEventListener('click', function(e) {
+            e.preventDefault();
+            const registerModal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+            registerModal.hide();
+            setTimeout(() => {
+                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+            }, 500);
+        });
+
+        // Switch from login to register
+        document.getElementById('showRegisterModal').addEventListener('click', function(e) {
+            e.preventDefault();
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            loginModal.hide();
+            setTimeout(() => {
+                const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+                registerModal.show();
+            }, 500);
+        });
+
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // In a real application, you would send this data to your backend API
+            console.log('Login attempt:', { email, password });
+
+            // For demo purposes, simulate a successful login
+            alert('Login successful!');
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            loginModal.hide();
+        });
+
+        // Handle register form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const studentID = document.getElementById('registerStudentID').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // In a real application, you would send this data to your backend API
+            console.log('Registration attempt:', { name, email, studentID, password });
+
+            // For demo purposes, simulate a successful registration
+            alert('Registration successful!');
+            const registerModal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+            registerModal.hide();
+        });
+    </script>
+</body>
+</html>

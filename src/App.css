@@ -1,0 +1,62 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App main {
+  flex: 1;
+}
+
+/* Card styling */
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* QR Code styling */
+.qr-code-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Form styling */
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Button styling */
+.btn {
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+/* Table styling */
+.table th {
+  background-color: #f8f9fa;
+}
+
+/* Badge styling */
+.badge {
+  font-weight: 500;
+  padding: 6px 10px;
+}
+
+/* Custom colors */
+.bg-light-gray {
+  background-color: #f8f9fa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+}

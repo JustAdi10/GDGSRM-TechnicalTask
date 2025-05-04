@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Registrations - Event Check-In System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header will be inserted here -->
+  <div id="header-container"></div>
+
+  <!-- Page Header -->
+  <section class="bg-gradient-success py-5 mb-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="text-white">My Registrations</h1>
+          <p class="text-white-50 lead">View and manage your event registrations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <!-- Tabs -->
+      <ul class="nav nav-tabs mb-4" id="registrationTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">
+            Upcoming Events
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">
+            Past Events
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="tab-content" id="registrationTabsContent">
+        <!-- Upcoming Events Tab -->
+        <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Tech Conference 2025</h5>
+                  <span class="badge bg-warning">Not Checked In</span>
+                </div>
+                <div class="card-body">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <p><i class="bi bi-calendar me-2"></i> May 15, 2025</p>
+                      <p><i class="bi bi-clock me-2"></i> 10:00 AM - 5:00 PM</p>
+                      <p><i class="bi bi-geo-alt me-2"></i> Main Auditorium</p>
+                      <p><i class="bi bi-calendar-check me-2"></i> Registered on: April 5, 2025</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <button class="btn btn-primary mb-2 show-qr-btn" data-event-id="1" data-event-title="Tech Conference 2025">
+                        <i class="bi bi-qr-code me-2"></i> Show QR Code
+                      </button>
+                      <a href="event-details.html?id=1" class="btn btn-outline-primary d-block">
+                        <i class="bi bi-info-circle me-2"></i> Event Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Hackathon 2025</h5>
+                  <span class="badge bg-warning">Not Checked In</span>
+                </div>
+                <div class="card-body">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <p><i class="bi bi-calendar me-2"></i> June 10, 2025</p>
+                      <p><i class="bi bi-clock me-2"></i> 9:00 AM - 9:00 AM (Next Day)</p>
+                      <p><i class="bi bi-geo-alt me-2"></i> Computer Lab</p>
+                      <p><i class="bi bi-calendar-check me-2"></i> Registered on: April 10, 2025</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <button class="btn btn-primary mb-2 show-qr-btn" data-event-id="2" data-event-title="Hackathon 2025">
+                        <i class="bi bi-qr-code me-2"></i> Show QR Code
+                      </button>
+                      <a href="event-details.html?id=2" class="btn btn-outline-primary d-block">
+                        <i class="bi bi-info-circle me-2"></i> Event Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Past Events Tab -->
+        <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Python Workshop</h5>
+                  <span class="badge bg-success">Checked In</span>
+                </div>
+                <div class="card-body">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <p><i class="bi bi-calendar me-2"></i> March 20, 2025</p>
+                      <p><i class="bi bi-clock me-2"></i> 2:00 PM - 5:00 PM</p>
+                      <p><i class="bi bi-geo-alt me-2"></i> Computer Lab</p>
+                      <p><i class="bi bi-calendar-check me-2"></i> Registered on: March 10, 2025</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <a href="#" class="btn btn-outline-secondary mb-2 disabled">
+                        <i class="bi bi-qr-code me-2"></i> Event Completed
+                      </a>
+                      <a href="#" class="btn btn-outline-primary d-block">
+                        <i class="bi bi-star me-2"></i> Rate Event
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Resume Building Workshop</h5>
+                  <span class="badge bg-success">Checked In</span>
+                </div>
+                <div class="card-body">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <p><i class="bi bi-calendar me-2"></i> February 15, 2025</p>
+                      <p><i class="bi bi-clock me-2"></i> 1:00 PM - 3:00 PM</p>
+                      <p><i class="bi bi-geo-alt me-2"></i> College Hall</p>
+                      <p><i class="bi bi-calendar-check me-2"></i> Registered on: February 5, 2025</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <a href="#" class="btn btn-outline-secondary mb-2 disabled">
+                        <i class="bi bi-qr-code me-2"></i> Event Completed
+                      </a>
+                      <a href="#" class="btn btn-outline-primary d-block">
+                        <i class="bi bi-star me-2"></i> Rate Event
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- QR Code Modal -->
+  <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="qrModalLabel">QR Code for Event</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <div id="qrcode" class="qr-container mb-4"></div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 id="modalEventTitle">Event Title</h5>
+              <p id="modalEventDate" class="mb-1"><i class="bi bi-calendar me-2"></i> Event Date</p>
+              <p id="modalEventTime" class="mb-1"><i class="bi bi-clock me-2"></i> Event Time</p>
+              <p id="modalEventLocation" class="mb-0"><i class="bi bi-geo-alt me-2"></i> Event Location</p>
+            </div>
+          </div>
+          <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i> Present this QR code at the event for check-in.
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="downloadQrBtn">
+            <i class="bi bi-download me-2"></i> Download QR Code
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer will be inserted here -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sample user data
+      const userId = 'usr789012';
+      
+      // Handle QR code display
+      const showQrButtons = document.querySelectorAll('.show-qr-btn');
+      showQrButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const eventId = this.getAttribute('data-event-id');
+          const eventTitle = this.getAttribute('data-event-title');
+          
+          // Update modal title
+          document.getElementById('qrModalLabel').textContent = 'QR Code for ' + eventTitle;
+          
+          // Update event details in modal
+          document.getElementById('modalEventTitle').textContent = eventTitle;
+          
+          // Set event details based on event ID
+          if (eventId === '1') {
+            document.getElementById('modalEventDate').innerHTML = '<i class="bi bi-calendar me-2"></i> May 15, 2025';
+            document.getElementById('modalEventTime').innerHTML = '<i class="bi bi-clock me-2"></i> 10:00 AM - 5:00 PM';
+            document.getElementById('modalEventLocation').innerHTML = '<i class="bi bi-geo-alt me-2"></i> Main Auditorium';
+          } else if (eventId === '2') {
+            document.getElementById('modalEventDate').innerHTML = '<i class="bi bi-calendar me-2"></i> June 10, 2025';
+            document.getElementById('modalEventTime').innerHTML = '<i class="bi bi-clock me-2"></i> 9:00 AM - 9:00 AM (Next Day)';
+            document.getElementById('modalEventLocation').innerHTML = '<i class="bi bi-geo-alt me-2"></i> Computer Lab';
+          }
+          
+          // Generate QR code data
+          const qrData = generateQRCodeData(userId, eventId);
+          
+          // Generate QR code
+          generateQRCode(qrData, 'qrcode');
+          
+          // Show modal
+          const qrModal = new bootstrap.Modal(document.getElementById('qrModal'));
+          qrModal.show();
+        });
+      });
+      
+      // Handle QR code download
+      document.getElementById('downloadQrBtn').addEventListener('click', function() {
+        const canvas = document.querySelector('#qrcode canvas');
+        if (canvas) {
+          const link = document.createElement('a');
+          link.download = 'qr-code.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

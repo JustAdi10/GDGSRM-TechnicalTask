@@ -1,0 +1,12 @@
+{"timestamp":"2025-05-04T09:28:33.116Z","method":"POST","url":"/api/auth/register","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:28:33.267Z","method":"POST","url":"/api/auth/register","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:28:33.363Z","method":"POST","url":"/api/auth/login","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:28:33.461Z","method":"POST","url":"/api/events","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:28:33.472Z","method":"GET","url":"/api/events","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:28:33.483Z","method":"GET","url":"/api/events/681733414f9bdc33fcda7d93","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:28:33.488Z","method":"POST","url":"/api/events/681733414f9bdc33fcda7d93/register","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:28:35.438Z","method":"GET","url":"/api/registrations","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:28:35.461Z","method":"GET","url":"/api/events/681733414f9bdc33fcda7d93/attendees","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:28:35.474Z","method":"GET","url":"/api/dashboard","ip":"::1","userAgent":"axios/1.9.0","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:43:03.626Z","method":"GET","url":"/","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","userId":"unauthenticated"}
+{"timestamp":"2025-05-04T09:43:03.959Z","method":"GET","url":"/favicon.ico","ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","userId":"unauthenticated"}

@@ -1,0 +1,43 @@
+{
+  "name": "gdgsrm-technicaltask",
+  "version": "1.0.0",
+  "description": "Offline friendly QR-Based Event Check-In System (Technical-Backend), GDG on Campus SRM Recruitment 2025",
+  "main": "index.js",
+  "scripts": {
+    "test": "node src/tests/runTests.js",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustAdi10/GDGSRM-TechnicalTask.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JustAdi10/GDGSRM-TechnicalTask/issues"
+  },
+  "homepage": "https://github.com/JustAdi10/GDGSRM-TechnicalTask#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.1",
+    "nodemailer": "^7.0.0",
+    "otplib": "^12.0.1",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "axios": "^1.9.0",
+    "nodemon": "^3.1.10",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

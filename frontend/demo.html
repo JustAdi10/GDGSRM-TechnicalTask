@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Check-In System Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 56px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #6c757d;
+        }
+        footer {
+            margin-top: auto;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Event Check-In System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#events">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#registrations">My Registrations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#admin">Admin Dashboard</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-light me-2" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="registerBtn">Register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-4">
+        <!-- Home Section -->
+        <section id="home" class="mb-5">
+            <div class="row">
+                <div class="col-md-12 text-center mb-4">
+                    <h1>Welcome to the Event Check-In System</h1>
+                    <p class="lead">A QR-based event check-in system for college events</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Browse Events</h5>
+                            <p class="card-text">View all upcoming events and register for the ones you're interested in.</p>
+                            <a href="#events" class="btn btn-primary">View Events</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">My Registrations</h5>
+                            <p class="card-text">View all events you've registered for and access your QR codes.</p>
+                            <a href="#registrations" class="btn btn-primary">View Registrations</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Admin Dashboard</h5>
+                            <p class="card-text">Access the admin dashboard to manage events and view statistics.</p>
+                            <a href="#admin" class="btn btn-primary">Go to Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="mb-5">
+            <h2 class="mb-4">Upcoming Events</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tech Conference 2025</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">May 15, 2025 at 10:00 AM</h6>
+                            <span class="badge bg-secondary mb-2">Main Auditorium</span>
+                            <p class="card-text">Join us for a day of tech talks, workshops, and networking opportunities.</p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-primary">View Details</button>
+                                <button class="btn btn-primary">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Hackathon 2025</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">June 10, 2025 at 9:00 AM</h6>
+                            <span class="badge bg-secondary mb-2">Computer Lab</span>
+                            <p class="card-text">24-hour coding competition with amazing prizes and learning opportunities.</p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-primary">View Details</button>
+                                <button class="btn btn-primary">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Career Fair</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">July 5, 2025 at 11:00 AM</h6>
+                            <span class="badge bg-secondary mb-2">College Hall</span>
+                            <p class="card-text">Meet recruiters from top companies and explore career opportunities.</p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-primary">View Details</button>
+                                <button class="btn btn-primary">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registrations Section -->
+        <section id="registrations" class="mb-5">
+            <h2 class="mb-4">My Registrations</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tech Conference 2025</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">May 15, 2025 at 10:00 AM</h6>
+                            <span class="badge bg-secondary mb-2">Main Auditorium</span>
+                            <p><strong>Registration Date:</strong> April 5, 2025</p>
+                            <p><strong>Status:</strong> <span class="badge bg-warning">Not Checked In</span></p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#qrModal">Show QR Code</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard Section -->
+        <section id="admin" class="mb-5">
+            <h2 class="mb-4">Admin Dashboard</h2>
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2>150</h2>
+                            <h5 class="card-title">Total Users</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2>5</h2>
+                            <h5 class="card-title">Total Events</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2>120</h2>
+                            <h5 class="card-title">Total Registrations</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2>75</h2>
+                            <h5 class="card-title">Total Check-ins</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Event Attendees</h5>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown">
+                            Export
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                            <li><a class="dropdown-item" href="#">Export as CSV</a></li>
+                            <li><a class="dropdown-item" href="#">Export as JSON</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Student ID</th>
+                                    <th>Registration Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>STU001</td>
+                                    <td>April 1, 2025</td>
+                                    <td><span class="badge bg-success">Checked In</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Jane Smith</td>
+                                    <td>jane@example.com</td>
+                                    <td>STU002</td>
+                                    <td>April 2, 2025</td>
+                                    <td><span class="badge bg-warning">Not Checked In</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Bob Johnson</td>
+                                    <td>bob@example.com</td>
+                                    <td>STU003</td>
+                                    <td>April 3, 2025</td>
+                                    <td><span class="badge bg-success">Checked In</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="qrModalLabel">QR Code for Tech Conference 2025</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="qr-code mb-3">QR Code</div>
+                    <p><strong>Event:</strong> Tech Conference 2025</p>
+                    <p><strong>Date:</strong> May 15, 2025</p>
+                    <p><strong>Time:</strong> 10:00 AM</p>
+                    <p><strong>Location:</strong> Main Auditorium</p>
+                    <div class="alert alert-info mt-3">
+                        Present this QR code at the event for check-in.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Event Check-In System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
